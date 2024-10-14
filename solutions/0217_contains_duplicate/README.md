@@ -1,6 +1,4 @@
-### 217. Contains Duplicate
-https://leetcode.com/problems/contains-duplicate/
-
+### [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
 ### Step-by-Step Breakdown:
 
 1.  **Initialization**:
