@@ -1,4 +1,4 @@
-### [242. Contains Duplicate](https://leetcode.com/problems/valid-anagram/)
+### [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
 ### Step-by-Step Breakdown:
 
 1.  **Check Lengths**:
