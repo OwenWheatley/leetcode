@@ -82,3 +82,20 @@
     -   Two passes through the `nums` array (one for `prefix` and one for `postfix`), each of which is O(n)O(n)O(n).
 -   **Space Complexity**: O(1)O(1)O(1) (if we don't count the space used for the output array `res`)
     -   The algorithm only uses a few extra variables (`prefix` and `postfix`) regardless of the input size. The space used for `res` is not considered extra space because it is part of the output.
+
+# Code
+```python3 []
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        res = [1] * (len(nums))
+
+        prefix = 1
+        for i in range(len(nums)):
+            res[i] = prefix
+            prefix *= nums[i]
+        postfix = 1
+        for i in range(len(nums) -1, -1, -1):
+            res[i] *= postfix
+            postfix *= nums[i]
+        return res
+```
