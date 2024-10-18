@@ -1,8 +1,6 @@
 ### [1. Two Sum](https://leetcode.com/problems/two-sum/)
 ### Step-by-Step Breakdown of the Code
 
-This code solves the "two-sum" problem using a dictionary to store previously seen numbers and their indices as we iterate through the list. Here's how it works:
-
 1.  **Initialization**:
 
     -   A dictionary `thisdict` is initialized as an empty dictionary `{}`. This dictionary will store the numbers seen so far as keys and their corresponding indices as values.
