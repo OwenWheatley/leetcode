@@ -1,61 +1,21 @@
-### [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
-### Step-by-Step Breakdown:
+### Step by Step Breakdown:
+1. First, check if the lengths of `s` and `t` are the same. If not, return `False` immediately because strings of different lengths cannot be anagrams.
+2. Initialize two dictionaries, `countS` and `countT`, to keep track of the frequency of each character in strings `s` and `t`, respectively.
+3. Loop through each character in `s` and `t` simultaneously:
+   - For each character in `s`, update its count in `countS`.
+   - For each character in `t`, update its count in `countT`.
+4. After the loop, compare the character frequencies in `countS` and `countT`:
+   - If for any character in `countS`, its frequency doesn't match the corresponding frequency in `countT`, return `False`.
+5. If all character frequencies match, return `True`, indicating that `t` is an anagram of `s`.
 
-1.  **Check Lengths**:
+### Time Complexity:
+- **O(n)**, where `n` is the length of `s` (or `t`, since their lengths must be the same). We loop through both strings once to build the frequency dictionaries and once more to compare them.
 
+### Space Complexity:
+- **O(1)**, since the dictionaries `countS` and `countT` only store up to 26 characters (lowercase English letters), which is constant space regardless of input size.
 
-    `if len(s) != len(t):
-        return False`
-
-    -   **Purpose**: If the lengths of the strings `s` and `t` are not equal, they can't be anagrams, so we can directly return `False`.
-    -   **Time Complexity**: `O(1)` since checking the lengths is a constant time operation.
-    -   **Space Complexity**: `O(1)` since no extra space is used here.
-2.  **Initialize Frequency Counters**:
-
-
-    `countS, countT = {}, {}`
-
-    -   **Purpose**: These dictionaries will store the frequency of each character in strings `s` and `t`.
-    -   **Time Complexity**: `O(1)` because the initialization of empty dictionaries is constant time.
-    -   **Space Complexity**: `O(1)` for initializing the variables, but this will grow as we store character counts.
-3.  **Build Frequency Counts**:
-
-
-    `for i in range(len(s)):
-        countS[s[i]] = countS.get(s[i], 0) + 1
-        countT[t[i]] = countT.get(t[i], 0) + 1`
-
-    -   **Purpose**: Iterate through both strings simultaneously, updating `countS` and `countT` to store the count of each character in `s` and `t`.
-    -   **Time Complexity**: `O(n)` where `n` is the length of `s` (or `t`, since they are the same length). This is because we iterate through each character once.
-    -   **Space Complexity**: `O(1)` for the loop control, but the space used for `countS` and `countT` will be `O(1)` if we assume a fixed character set like ASCII. In the worst case, if we assume an unbounded character set (like Unicode), it could be `O(n)`.
-4.  **Compare Frequency Counts**:
-
-
-    `for c in countS:
-        if countS[c] != countT.get(c, 0):
-            return False`
-
-    -   **Purpose**: Iterate over each character in `countS` and compare its frequency with `countT`. If any character count differs, return `False`.
-    -   **Time Complexity**: `O(n)` in the worst case, as iterating over `countS` involves checking each character count.
-    -   **Space Complexity**: `O(1)` for the loop control, as the dictionaries are already built and we're not using extra space.
-5.  **Return True if All Counts Match**:
-
-
-    `return True`
-
-    -   **Purpose**: If no discrepancies are found in the counts, return `True`, indicating `t` is an anagram of `s`.
-    -   **Time Complexity**: `O(1)` since returning a value is constant time.
-    -   **Space Complexity**: `O(1)`.
-
-### Overall Time Complexity
-
-The dominant operations are building the frequency counts and iterating through them:
-
--   **Time Complexity**: `O(n)` + `O(n)` = `O(n)`, where `n` is the length of `s` (or `t`).
--   **Space Complexity**: `O(n)` in the worst case (if we count storage for characters in the frequency dictionaries).
-
-# Code
-```python3 []
+### Code Snippet:
+```python
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
@@ -66,8 +26,9 @@ class Solution:
         for i in range(len(s)):
             countS[s[i]] = countS.get(s[i], 0) + 1
             countT[t[i]] = countT.get(t[i], 0) + 1
+        
         for c in countS:
             if countS[c] != countT.get(c, 0):
                 return False
+                
         return True
-```

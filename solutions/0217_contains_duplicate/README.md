@@ -1,34 +1,18 @@
-### [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
-### Step-by-Step Breakdown:
-
-1.  **Initialization**:
-
-    -   Create an empty set called `hashset`. This set will store the elements as we iterate through `nums`.
-2.  **Iterate Through `nums`**:
-
-    -   Loop through each element `n` in the list `nums`.
-3.  **Check for Duplicates**:
-
-    -   For each element `n`, check if it is already in `hashset`:
-        -   **If `n` is found in `hashset`**, it means that `n` has already appeared before, so we return `True` immediately, indicating that there is a duplicate.
-        -   **If `n` is not found in `hashset`**, add `n` to `hashset` to track that we've seen this element.
-4.  **No Duplicates Found**:
-
-    -   If the loop completes without finding any duplicates, return `False`. This means all elements in `nums` are unique.
+### Step by Step Breakdown:
+1. Initialize an empty set `hashset` to keep track of unique numbers we've encountered in the array.
+2. Iterate through each element `n` in the `nums` array:
+   - If `n` is already present in `hashset`, return `True` as it means the number has appeared at least twice.
+   - If `n` is not in `hashset`, add it to the set and continue checking the remaining numbers.
+3. If the loop completes without finding any duplicates, return `False`, indicating all elements are distinct.
 
 ### Time Complexity:
+- **O(n)**, where `n` is the length of the input array `nums`. Each lookup and insertion in a set takes O(1) on average, so we only need to traverse the list once.
 
--   **Time Complexity**: **O(n)**
+### Space Complexity:
+- **O(n)**, since we store up to `n` unique elements in the `hashset`.
 
-    -   The time complexity is `O(n)` where `n` is the length of `nums` because:
-        -   We iterate through each element in `nums` exactly once.
-        -   Checking for membership in a set and adding an element to a set both have an average time complexity of `O(1)`.
--   **Space Complexity**: **O(n)**
-
-    -   The space complexity is `O(n)` because, in the worst case (when there are no duplicates), we may store all `n` elements of `nums` in `hashset`.
-
-# Code
-```python3 []
+### Code Snippet:
+```python
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         hashset = set()
@@ -39,4 +23,3 @@ class Solution:
             else:
                 hashset.add(n)
         return False
-```
